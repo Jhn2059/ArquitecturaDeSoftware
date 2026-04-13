@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Arquitectura de Software</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+
+  <!-- ==================== MODAL LOGIN ==================== -->
+  <div id="loginModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Acceso administrador">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal" aria-label="Cerrar">✕</button>
+      <div class="modal-header">
+        <div class="modal-icon">
+          <img src="recursos/logo_upla.png" alt="Logo" />
+        </div>
+        <h2>Acceso Admin</h2>
+        <p>Ingresa tus credenciales para continuar</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label for="emailInput">Email</label>
+          <input type="email" id="emailInput" placeholder="admin@ejemplo.com" autocomplete="email" />
+        </div>
+        <div class="input-group">
+          <label for="passwordInput">Contraseña</label>
+          <div class="password-wrapper">
+            <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password" />
+            <button class="toggle-pass" id="togglePass" type="button" aria-label="Mostrar contraseña">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div id="loginError" class="login-error hidden">
+          <i class="fas fa-circle-exclamation"></i> Email o contraseña incorrectos.
+        </div>
+        <button class="btn-login" id="loginBtn">
+          <span id="loginBtnText">Iniciar sesión</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header">
+    <!-- Logo -->
+    <div class="header-logo">
+      <div class="logo-mark">
+        <img src="recursos/logo_upla.png" alt="Logo" />
+      </div>
+      <span class="logo-text">Arq.<br />Software</span>
+    </div>
+
+    <!-- Título central -->
+    <div class="header-title">
+      <span class="header-tag">Jhon Taipe Chavez | Portafolio Digital</span>
+      <h1>PORTAFOLIO</h1>
+    </div>
+
+    <!-- Nombre + botones -->
+    <div class="header-right">
+      <div class="user-info">
+        <span class="user-name" id="displayName">Tu Nombre</span>
+        <span class="user-role" id="userRoleBadge">Visitante</span>
+      </div>
+      <button class="btn-admin" id="adminBtn" title="Acceder como administrador">
+        <i class="fas fa-lock"></i> Admin
+      </button>
+      <button class="btn-logout hidden" id="logoutBtn" title="Cerrar sesión">
+        <i class="fas fa-right-from-bracket"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="nav-container" aria-label="Navegación de unidades">
+    <div class="nav-inner">
+      <!-- Pestañas de Unidades -->
+      <div class="nav-units" role="tablist" aria-label="Unidades">
+        <button class="unit-btn active" data-unit="1" role="tab" aria-selected="true">
+          <span class="unit-num">01</span>
+          <span class="unit-label">Unidad I</span>
+        </button>
+        <button class="unit-btn" data-unit="2" role="tab" aria-selected="false">
+          <span class="unit-num">02</span>
+          <span class="unit-label">Unidad II</span>
+        </button>
+        <button class="unit-btn" data-unit="3" role="tab" aria-selected="false">
+          <span class="unit-num">03</span>
+          <span class="unit-label">Unidad III</span>
+        </button>
+        <button class="unit-btn" data-unit="4" role="tab" aria-selected="false">
+          <span class="unit-num">04</span>
+          <span class="unit-label">Unidad IV</span>
+        </button>
+      </div>
+
+      <!-- Semanas -->
+      <div class="nav-weeks" role="tablist" aria-label="Semanas">
+        <button class="week-btn active" data-week="1" role="tab" aria-selected="true">
+          <i class="fas fa-calendar-week"></i> Semana 1
+        </button>
+        <button class="week-btn" data-week="2" role="tab" aria-selected="false">
+          <i class="fas fa-calendar-week"></i> Semana 2
+        </button>
+        <button class="week-btn" data-week="3" role="tab" aria-selected="false">
+          <i class="fas fa-calendar-week"></i> Semana 3
+        </button>
+        <button class="week-btn" data-week="4" role="tab" aria-selected="false">
+          <i class="fas fa-calendar-week"></i> Semana 4
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN ==================== -->
+  <main class="main-content">
+
+    <!-- Encabezado de sección -->
+    <div class="content-header">
+      <div class="breadcrumb">
+        <span class="bc-icon"><i class="fas fa-folder-open"></i></span>
+        <span id="bcUnit">Unidad I</span>
+        <span class="sep">›</span>
+        <span id="bcWeek">Semana 1</span>
+      </div>
+      <div class="content-title-row">
+        <div>
+          <h2 id="sectionTitle">Arquitectura de Software — Unidad I, Semana 1</h2>
+          <p class="section-sub" id="sectionSub">Archivos y recursos de esta semana</p>
+        </div>
+        <button class="btn-upload hidden" id="uploadBtn">
+          <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+        </button>
+      </div>
+    </div>
+
+    <!-- Panel de carga (solo admin) -->
+    <div class="upload-panel hidden" id="uploadPanel">
+      <div class="upload-area" id="dropZone">
+        <div class="upload-icon-wrap">
+          <i class="fas fa-file-arrow-up"></i>
+        </div>
+        <p class="upload-hint">
+          Arrastra un archivo aquí o
+          <label for="fileInput" class="upload-link">selecciona uno</label>
+        </p>
+        <p class="upload-selected hidden" id="selectedFileName"></p>
+        <input type="file" id="fileInput" hidden />
+        <div class="input-group mt-1">
+          <label for="fileDescription">Descripción (opcional)</label>
+          <input
+            type="text"
+            id="fileDescription"
+            placeholder="Ej: Diagrama de componentes UML"
+            maxlength="200"
+          />
+        </div>
+        <div class="upload-actions">
+          <button class="btn-cancel" id="cancelUpload">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button class="btn-confirm" id="confirmUpload">
+            <i class="fas fa-upload"></i> Subir
+          </button>
+        </div>
+      </div>
+      <div class="progress-bar hidden" id="uploadProgress">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-label hidden" id="progressLabel">Subiendo archivo…</p>
+    </div>
+
+    <!-- Grilla de archivos -->
+    <div class="files-grid" id="filesGrid">
+      <div class="loading-state" id="loadingState">
+        <div class="loader"></div>
+        <p>Cargando archivos…</p>
+      </div>
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-icon">◫</div>
+        <p class="empty-title">Sin archivos aún</p>
+        <p class="empty-sub">No se han subido recursos para esta semana.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <!-- Marca -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="recursos/logo_upla.png" alt="Logo" />
+        </div>
+        <div class="footer-brand-text">
+          <p class="footer-course">Arquitectura de Software</p>
+          <p class="footer-year">© <span id="footerYear"></span> — Portafolio Digital</p>
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-social">
+        <p class="footer-social-title">Encuéntrame en</p>
+        <div class="footer-links">
+          <a href="https://github.com" class="social-link" title="GitHub" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://x.com" class="social-link" title="X / Twitter" target="_blank" rel="noopener">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://workspace.google.com/intl/es/gmail/" class="social-link" target="_blank" title="Correo electrónico">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Info técnica -->
+      <div class="footer-info">
+        <div class="footer-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag accent-tag">Supabase</span>
+        </div>
+        <p class="footer-note">Almacenamiento en la nube con Supabase Storage</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST ==================== -->
+  <div class="toast hidden" id="toast" role="alert" aria-live="polite">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
