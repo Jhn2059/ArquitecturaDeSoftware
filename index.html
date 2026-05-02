@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio | Arquitectura de Software</title>
+  <title>Portafolio — Arquitectura de Software</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- ← CAMBIO TIPOGRÁFICO: Cormorant Garant (serif editorial) + Fira Code (mono técnico) + Outfit (body) -->
+  <!-- Antes: Syne + JetBrains Mono + DM Sans -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Fira+Code:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
   <link
@@ -22,9 +24,7 @@
     <div class="modal-box">
       <button class="modal-close" id="closeModal" aria-label="Cerrar">✕</button>
       <div class="modal-header">
-        <div class="modal-icon">
-          <img src="recursos/logo_upla.png" alt="Logo" />
-        </div>
+        <div class="modal-icon">⬡</div>
         <h2>Acceso Admin</h2>
         <p>Ingresa tus credenciales para continuar</p>
       </div>
@@ -57,16 +57,14 @@
   <header class="header">
     <!-- Logo -->
     <div class="header-logo">
-      <div class="logo-mark">
-        <img src="recursos/logo_upla.png" alt="Logo" />
-      </div>
+      <div class="logo-mark">AS</div>
       <span class="logo-text">Arq.<br />Software</span>
     </div>
 
     <!-- Título central -->
     <div class="header-title">
-      <span class="header-tag">| Portafolio Digital |</span>
-      <h1>Jhon Taipe Chavez</h1>
+      <span class="header-tag">// portafolio digital</span>
+      <h1>PORTAFOLIO</h1>
     </div>
 
     <!-- Nombre + botones -->
@@ -83,6 +81,50 @@
       </button>
     </div>
   </header>
+
+  <!-- ==================== HERO / PORTADA ==================== -->
+  <section class="hero" id="heroSection" aria-label="Portada del portafolio">
+    <div class="hero-bg-dots" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <!-- Chip de estado -->
+      <div class="hero-chip">
+        <span class="hero-chip-dot"></span>
+        Ciclo 2025 — En curso
+      </div>
+
+      <!-- Saludo principal -->
+      <h2 class="hero-title">
+        Bienvenido a mi<br>
+        <span class="hero-title-accent">Portafolio Digital</span>
+      </h2>
+
+      <p class="hero-desc">
+        Documentación, recursos y materiales del curso de
+        <strong>Arquitectura de Software</strong>. Navega por cada
+        unidad y semana para acceder a los archivos de estudio.
+      </p>
+
+      <!-- Botones CTA -->
+      <div class="hero-btns">
+        <button class="hero-btn-primary" onclick="document.querySelector('.nav-container').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-compass"></i> Explorar portafolio
+        </button>
+        <button class="hero-btn-secondary" id="heroAdminBtn">
+          <i class="fas fa-lock"></i> Acceso Admin
+        </button>
+      </div>
+
+      <!-- Pills de info -->
+      <div class="hero-pills">
+        <span class="hero-pill"><i class="fas fa-layer-group"></i> 4 Unidades</span>
+        <span class="hero-pill-sep">·</span>
+        <span class="hero-pill"><i class="fas fa-calendar-week"></i> 16 Semanas</span>
+        <span class="hero-pill-sep">·</span>
+        <span class="hero-pill"><i class="fas fa-database"></i> Supabase Storage</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ==================== NAVIGATION ==================== -->
   <nav class="nav-container" aria-label="Navegación de unidades">
@@ -204,9 +246,7 @@
 
       <!-- Marca -->
       <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="recursos/logo_upla.png" alt="Logo" />
-        </div>
+        <div class="footer-logo">AS</div>
         <div class="footer-brand-text">
           <p class="footer-course">Arquitectura de Software</p>
           <p class="footer-year">© <span id="footerYear"></span> — Portafolio Digital</p>
@@ -217,16 +257,16 @@
       <div class="footer-social">
         <p class="footer-social-title">Encuéntrame en</p>
         <div class="footer-links">
-          <a href="https://github.com" class="social-link" title="GitHub" target="_blank" rel="noopener">
+          <a href="#" class="social-link" title="GitHub" target="_blank" rel="noopener">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
+          <a href="#" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://x.com" class="social-link" title="X / Twitter" target="_blank" rel="noopener">
+          <a href="#" class="social-link" title="X / Twitter" target="_blank" rel="noopener">
             <i class="fab fa-x-twitter"></i>
           </a>
-          <a href="https://workspace.google.com/intl/es/gmail/" class="social-link" target="_blank" title="Correo electrónico">
+          <a href="#" class="social-link" title="Correo electrónico">
             <i class="fas fa-envelope"></i>
           </a>
         </div>
