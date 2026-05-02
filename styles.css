@@ -1,45 +1,69 @@
 /* ============================================================
    PORTAFOLIO — ARQUITECTURA DE SOFTWARE
-   Tema: Blueprint arquitectónico oscuro
-   Fuentes: Syne (display) · JetBrains Mono (mono) · DM Sans (body)
+   Tema: Professional Dark — Grises equilibrados
+   Fuentes: Cormorant Garant · Fira Code · Outfit
+   ============================================================ */
+
+/* === PALETA DE REFERENCIA ===
+   #171718  Fondo principal
+   #1F2124  Fondo secundario / secciones / nav
+   #393D42  Cards / contenedores
+   #F9FAF9  Texto principal
+   #C6C8CA  Texto secundario
+   #A0A4A8  Texto terciario / labels
+   #6A6E73  Bordes / botones secundarios
+   #8A8F94  Hover / estados activos
+   #B0B4B8  Inputs / interactivos claros
+   #D1D5DB  Acento / hover elegante / líneas destacadas
    ============================================================ */
 
 /* === VARIABLES === */
 :root {
-  --bg-primary:    #070b17;
-  --bg-secondary:  #0b1020;
-  --bg-card:       #0f1628;
-  --bg-card-hover: #131c35;
-  --bg-nav:        rgba(7, 11, 23, 0.94);
+  /* Fondos */
+  --bg-primary:    #171718;
+  --bg-secondary:  #1f2124;
+  --bg-card:       #393d42;
+  --bg-card-hover: #44484e;
+  --bg-nav:        rgba(23, 23, 24, 0.96);
 
-  --accent:        #00d4ff;
-  --accent-2:      #0077ff;
-  --accent-dim:    rgba(0, 212, 255, 0.10);
-  --accent-border: rgba(0, 212, 255, 0.25);
-  --accent-glow:   0 0 24px rgba(0, 212, 255, 0.25);
+  /* Acento principal */
+  --accent:        #d1d5db;
+  --accent-2:      #b0b4b8;
+  --accent-dim:    rgba(209, 213, 219, 0.09);
+  --accent-border: rgba(209, 213, 219, 0.20);
+  --accent-glow:   0 0 24px rgba(209, 213, 219, 0.10);
 
-  --success:       #00e5a0;
-  --success-dim:   rgba(0, 229, 160, 0.12);
-  --error:         #ff4d6d;
-  --error-dim:     rgba(255, 77, 109, 0.12);
-  --warning:       #ffb547;
+  /* UI interactiva */
+  --ui-border:     #6a6e73;
+  --ui-hover:      #8a8f94;
+  --ui-input:      #b0b4b8;
 
-  --text-primary:  #dde4f0;
-  --text-secondary:#7a8ba8;
-  --text-muted:    #3a4a62;
+  /* Estados */
+  --success:       #6baa8e;
+  --success-dim:   rgba(107, 170, 142, 0.10);
+  --error:         #b97070;
+  --error-dim:     rgba(185, 112, 112, 0.10);
+  --warning:       #b0a080;
 
-  --border:        rgba(255,255,255,0.06);
-  --border-strong: rgba(0, 212, 255, 0.22);
+  /* Texto */
+  --text-primary:  #f9faf9;
+  --text-secondary:#c6c8ca;
+  --text-muted:    #a0a4a8;
 
-  --font-display:  'Syne', sans-serif;
-  --font-mono:     'JetBrains Mono', monospace;
-  --font-body:     'DM Sans', sans-serif;
+  /* Bordes generales */
+  --border:        rgba(106, 110, 115, 0.30);
+  --border-strong: rgba(209, 213, 219, 0.18);
+
+  /* Tipografía */
+  --font-display:  'Cormorant Garant', Georgia, serif;
+  --font-mono:     'Fira Code', 'Courier New', monospace;
+  --font-body:     'Outfit', system-ui, sans-serif;
 
   --radius:        8px;
   --radius-lg:     14px;
   --transition:    0.2s ease;
-  --header-h:      68px;
-  --nav-h:         96px;
+  --header-h:      72px;
+  --nav-h:         104px;
 }
 
 /* === RESET === */
@@ -51,18 +75,138 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  /* Blueprint grid pattern */
+  /* Textura sutil: puntos muy finos en gris D1D5DB */
   background-image:
-    linear-gradient(rgba(0, 212, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(rgba(0, 212, 255, 0.01) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.01) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+    radial-gradient(rgba(209, 213, 219, 0.045) 1px, transparent 1px),
+    radial-gradient(rgba(209, 213, 219, 0.02)  1px, transparent 1px);
+  background-size: 24px 24px, 12px 12px;
+  background-position: 0 0, 12px 12px;
 }
+
+/* === TAMAÑOS DE TEXTO GLOBALES (aumentados) === */
+p, li, td, th { font-size: 1.05rem; }
+small, .small  { font-size: 0.9rem; }
 
 /* === UTILITIES === */
 .hidden  { display: none !important; }
 .mt-1    { margin-top: 1rem; }
+
+
+/* ============================================================
+   HERO / PORTADA
+   ============================================================ */
+.hero {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-dots {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(rgba(209, 213, 219, 0.07) 1px, transparent 1px),
+    radial-gradient(rgba(209, 213, 219, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px, 10px 10px;
+  background-position: 0 0, 10px 10px;
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
+}
+
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(209, 213, 219, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 14px;
+  letter-spacing: 0.08em;
+}
+.hero-chip-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); opacity: 0.7;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 3rem; line-height: 1.12;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+.hero-title-accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-family: var(--font-body); font-size: 1.05rem;
+  color: var(--text-secondary); line-height: 1.7;
+  max-width: 520px;
+}
+.hero-desc strong { color: var(--text-primary); font-weight: 500; }
+
+.hero-btns {
+  display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center;
+  margin-top: 0.2rem;
+}
+.hero-btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  background: var(--accent);
+  border: none; border-radius: var(--radius);
+  color: var(--bg-primary);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.hero-btn-primary:hover {
+  background: #e8ecf0;
+  box-shadow: 0 6px 24px rgba(209,213,219,0.18);
+  transform: translateY(-2px);
+}
+.hero-btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  background: transparent;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-family: var(--font-mono); font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.hero-btn-secondary:hover {
+  border-color: var(--ui-hover);
+  color: var(--text-primary);
+  background: rgba(138,143,148,0.08);
+}
+
+.hero-pills {
+  display: flex; align-items: center; gap: 0.6rem;
+  flex-wrap: wrap; justify-content: center;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 12px;
+  letter-spacing: 0.04em;
+}
+.hero-pill i { font-size: 0.65rem; opacity: 0.7; }
+.hero-pill-sep { color: var(--ui-border); font-size: 0.9rem; }
+
+@media (max-width: 640px) {
+  .hero { padding: 2.8rem 1.2rem 2.4rem; }
+  .hero-title { font-size: 2.1rem; }
+}
 
 /* ============================================================
    MODAL LOGIN
@@ -110,13 +254,6 @@ body {
   margin-bottom: 0.6rem; display: block;
   animation: pulse 2.5s ease-in-out infinite;
 }
-
-.modal-icon img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-}
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.6; }
@@ -214,7 +351,7 @@ body {
 }
 .logo-mark {
   flex-shrink: 0;
-  width: 50px; height: 50px;
+  width: 44px; height: 44px;
   background: var(--accent-dim);
   border: 1.5px solid var(--accent);
   border-radius: 10px;
@@ -230,12 +367,6 @@ body {
   line-height: 1.4;
 }
 
-.logo-mark img {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
-}
-
 /* Título */
 .header-title { flex: 2; text-align: center; }
 .header-tag {
@@ -245,9 +376,10 @@ body {
   margin-bottom: 1px;
 }
 .header-title h1 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: 1.65rem; letter-spacing: 0.18em;
-  background: linear-gradient(130deg, #ffffff 25%, var(--accent) 75%);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.9rem; letter-spacing: 0.22em; /* ← CAMBIO: ligeramente más grande, Cormorant necesita espacio */
+  /* Gradiente #F9FAF9 → #D1D5DB */
+  background: linear-gradient(130deg, #f9faf9 15%, #d1d5db 85%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -636,7 +768,7 @@ body {
 
 .footer-brand { display: flex; align-items: center; gap: 1rem; }
 .footer-logo {
-  width: 50px; height: 50px; flex-shrink: 0;
+  width: 42px; height: 42px; flex-shrink: 0;
   background: var(--accent-dim);
   border: 1.5px solid var(--accent);
   border-radius: 10px;
@@ -645,13 +777,6 @@ body {
   font-size: 0.78rem; letter-spacing: 0.04em;
   color: var(--accent);
 }
-
-.footer-logo img {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
-}
-
 .footer-course {
   font-family: var(--font-display); font-weight: 600;
   font-size: 0.93rem; color: var(--text-primary);
