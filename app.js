@@ -17,10 +17,10 @@
 //  ⚙️  CONFIGURACIÓN — Editar estos valores
 // ============================================================
 const CONFIG = {
-  SUPABASE_URL:      "TU_URL_SUPABASE",          // Ej: https://xxxx.supabase.co
-  SUPABASE_ANON_KEY: "TU_ANON_KEY_SUPABASE",     // Clave pública anon
+  SUPABASE_URL:      "https://yacldllzebtdntrremcm.supabase.co",          // Ej: https://xxxx.supabase.co
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhY2xkbGx6ZWJ0ZG50cnJlbWNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwMzY1MzQsImV4cCI6MjA5MTYxMjUzNH0.-N6IgsnPw_ieyimDzXBf69d-Ur3sft5G-WZgM3nJN1k",     // Clave pública anon
   STORAGE_BUCKET:    "portfolio",                 // Nombre del bucket
-  ADMIN_DISPLAY_NAME: "Tu Nombre",               // Tu nombre real para el header
+  ADMIN_DISPLAY_NAME: "Jhon Taipe Chavez",               // Tu nombre real para el header
   VISITOR_NAME:      "Visitante",
 };
 
