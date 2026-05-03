@@ -395,6 +395,12 @@ small, .small  { font-size: 0.9rem; }
   line-height: 1.4;
 }
 
+.logo-mark img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
 /* Título */
 .header-title { flex: 2; text-align: center; }
 .header-tag {
@@ -856,6 +862,12 @@ small, .small  { font-size: 0.9rem; }
 .footer-note {
   font-family: var(--font-mono); font-size: 0.65rem;
   color: var(--text-muted); text-align: right;
+}
+
+.footer-logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
 }
 
 /* ============================================================
