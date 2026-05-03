@@ -54,7 +54,12 @@
   --border:        rgba(106, 110, 115, 0.30);
   --border-strong: rgba(209, 213, 219, 0.18);
 
-  /* Tipografía */
+  /* ── Acento cálido dorado desgastado (visón / bronce viejo) ── */
+  --warm:          #c2a882;   /* dorado desgastado principal        */
+  --warm-2:        #a8896a;   /* bronce oscuro / hover              */
+  --warm-dim:      rgba(194, 168, 130, 0.12);
+  --warm-border:   rgba(194, 168, 130, 0.28);
+  --warm-glow:     0 0 22px rgba(194, 168, 130, 0.16);
   --font-display:  'Cormorant Garant', Georgia, serif;
   --font-mono:     'Fira Code', 'Courier New', monospace;
   --font-body:     'Outfit', system-ui, sans-serif;
@@ -98,82 +103,89 @@ small, .small  { font-size: 0.9rem; }
 .hero {
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border);
-  padding: 4rem 2rem 3.5rem;
+  /* Ocupa toda la pantalla menos el header — el nav queda bajo el fold */
+  min-height: calc(100vh - var(--header-h));
+  padding: 0 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
 
 .hero-bg-dots {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    radial-gradient(rgba(209, 213, 219, 0.07) 1px, transparent 1px),
-    radial-gradient(rgba(209, 213, 219, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px, 10px 10px;
-  background-position: 0 0, 10px 10px;
+    radial-gradient(rgba(209, 213, 219, 0.055) 1px, transparent 1px),
+    radial-gradient(rgba(194, 168, 130, 0.03) 1px, transparent 1px);
+  background-size: 22px 22px, 11px 11px;
+  background-position: 0 0, 11px 11px;
 }
 
 .hero-inner {
   position: relative; z-index: 1;
-  max-width: 680px; margin: 0 auto;
-  display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
+  max-width: 700px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; gap: 1.6rem;
+  padding: 3rem 0;
 }
 
 .hero-chip {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--font-mono); font-size: 0.75rem;
-  color: var(--text-muted);
-  background: rgba(209, 213, 219, 0.06);
-  border: 1px solid var(--border);
+  color: var(--warm-2);
+  background: var(--warm-dim);
+  border: 1px solid var(--warm-border);
   border-radius: 20px; padding: 5px 14px;
   letter-spacing: 0.08em;
 }
 .hero-chip-dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); opacity: 0.7;
+  background: var(--warm);
   animation: pulse 2.4s ease-in-out infinite;
 }
 
 .hero-title {
   font-family: var(--font-display); font-weight: 700;
-  font-size: 3rem; line-height: 1.12;
+  font-size: 3.4rem; line-height: 1.1;
   color: var(--text-primary);
   letter-spacing: 0.01em;
 }
 .hero-title-accent {
   font-style: italic;
-  color: var(--accent);
+  /* Gradiente cálido en el título hero */
+  background: linear-gradient(130deg, #f9faf9 20%, var(--warm) 85%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-desc {
-  font-family: var(--font-body); font-size: 1.05rem;
-  color: var(--text-secondary); line-height: 1.7;
-  max-width: 520px;
+  font-family: var(--font-body); font-size: 1.1rem;
+  color: var(--text-secondary); line-height: 1.75;
+  max-width: 540px;
 }
 .hero-desc strong { color: var(--text-primary); font-weight: 500; }
 
 .hero-btns {
   display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
 }
 .hero-btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1.8rem;
-  background: var(--accent);
+  padding: 0.85rem 2rem;
+  background: var(--warm);
   border: none; border-radius: var(--radius);
   color: var(--bg-primary);
-  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
   cursor: pointer;
   transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 .hero-btn-primary:hover {
-  background: #e8ecf0;
-  box-shadow: 0 6px 24px rgba(209,213,219,0.18);
+  background: #d4bc96;
+  box-shadow: var(--warm-glow);
   transform: translateY(-2px);
 }
 .hero-btn-secondary {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1.8rem;
+  padding: 0.85rem 2rem;
   background: transparent;
   border: 1px solid var(--ui-border);
   border-radius: var(--radius);
@@ -183,9 +195,9 @@ small, .small  { font-size: 0.9rem; }
   transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 .hero-btn-secondary:hover {
-  border-color: var(--ui-hover);
-  color: var(--text-primary);
-  background: rgba(138,143,148,0.08);
+  border-color: var(--warm-border);
+  color: var(--warm);
+  background: var(--warm-dim);
 }
 
 .hero-pills {
@@ -197,15 +209,31 @@ small, .small  { font-size: 0.9rem; }
   font-family: var(--font-mono); font-size: 0.72rem;
   color: var(--text-muted);
   border: 1px solid var(--border);
-  border-radius: 20px; padding: 4px 12px;
+  border-radius: 20px; padding: 4px 13px;
   letter-spacing: 0.04em;
 }
 .hero-pill i { font-size: 0.65rem; opacity: 0.7; }
 .hero-pill-sep { color: var(--ui-border); font-size: 0.9rem; }
 
+/* Flecha scroll hint */
+.hero-inner::after {
+  content: '↓';
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: 1rem;
+  color: var(--text-muted);
+  animation: bounceDown 2s ease-in-out infinite;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+  50%       { transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
+
 @media (max-width: 640px) {
-  .hero { padding: 2.8rem 1.2rem 2.4rem; }
-  .hero-title { font-size: 2.1rem; }
+  .hero { min-height: calc(100vh - var(--header-h)); padding: 0 1.2rem; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-desc  { font-size: 1rem; }
 }
 
 /* ============================================================
@@ -352,18 +380,18 @@ small, .small  { font-size: 0.9rem; }
 .logo-mark {
   flex-shrink: 0;
   width: 44px; height: 44px;
-  background: var(--accent-dim);
-  border: 1.5px solid var(--accent);
+  background: var(--warm-dim);
+  border: 1.5px solid var(--warm);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-weight: 800;
-  font-size: 0.85rem; letter-spacing: 0.04em;
-  color: var(--accent);
-  box-shadow: var(--accent-glow);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.92rem; letter-spacing: 0.04em;
+  color: var(--warm);
+  box-shadow: var(--warm-glow);
 }
 .logo-text {
   font-family: var(--font-mono); font-size: 0.72rem;
-  color: var(--text-secondary); letter-spacing: 0.04em;
+  color: var(--warm-2); letter-spacing: 0.04em;
   line-height: 1.4;
 }
 
@@ -372,14 +400,14 @@ small, .small  { font-size: 0.9rem; }
 .header-tag {
   display: block;
   font-family: var(--font-mono); font-size: 0.67rem;
-  color: var(--text-muted); letter-spacing: 0.12em;
+  color: var(--warm-2); letter-spacing: 0.12em;
   margin-bottom: 1px;
 }
 .header-title h1 {
   font-family: var(--font-display); font-weight: 700;
-  font-size: 1.9rem; letter-spacing: 0.22em; /* ← CAMBIO: ligeramente más grande, Cormorant necesita espacio */
-  /* Gradiente #F9FAF9 → #D1D5DB */
-  background: linear-gradient(130deg, #f9faf9 15%, #d1d5db 85%);
+  font-size: 1.9rem; letter-spacing: 0.22em;
+  /* Gradiente: blanco puro → dorado desgastado */
+  background: linear-gradient(130deg, #f9faf9 20%, var(--warm) 85%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -393,21 +421,21 @@ small, .small  { font-size: 0.9rem; }
 .user-name {
   display: block;
   font-family: var(--font-display); font-weight: 600;
-  font-size: 0.93rem; color: var(--text-primary);
+  font-size: 1rem; color: var(--text-primary);
   margin-bottom: 3px;
 }
 .user-role {
   display: inline-flex; align-items: center;
   font-family: var(--font-mono); font-size: 0.62rem;
   padding: 0.18rem 0.55rem; border-radius: 20px;
-  background: var(--accent-dim); color: var(--accent);
-  border: 1px solid var(--accent-border);
+  background: var(--warm-dim); color: var(--warm);
+  border: 1px solid var(--warm-border);
   text-transform: uppercase; letter-spacing: 0.1em;
   transition: all var(--transition);
 }
 .user-role.admin {
   background: var(--success-dim); color: var(--success);
-  border-color: rgba(0, 229, 160, 0.3);
+  border-color: rgba(107, 170, 142, 0.35);
 }
 
 .btn-admin, .btn-logout {
@@ -420,10 +448,10 @@ small, .small  { font-size: 0.9rem; }
 }
 .btn-admin {
   background: transparent;
-  border: 1px solid var(--border-strong);
-  color: var(--accent);
+  border: 1px solid var(--warm-border);
+  color: var(--warm);
 }
-.btn-admin:hover { background: var(--accent-dim); }
+.btn-admin:hover { background: var(--warm-dim); color: var(--warm); }
 .btn-logout {
   background: transparent;
   border: 1px solid rgba(255, 77, 109, 0.28);
@@ -769,20 +797,20 @@ small, .small  { font-size: 0.9rem; }
 .footer-brand { display: flex; align-items: center; gap: 1rem; }
 .footer-logo {
   width: 42px; height: 42px; flex-shrink: 0;
-  background: var(--accent-dim);
-  border: 1.5px solid var(--accent);
+  background: var(--warm-dim);
+  border: 1.5px solid var(--warm);
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-weight: 800;
-  font-size: 0.78rem; letter-spacing: 0.04em;
-  color: var(--accent);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 0.04em;
+  color: var(--warm);
 }
 .footer-course {
   font-family: var(--font-display); font-weight: 600;
-  font-size: 0.93rem; color: var(--text-primary);
+  font-size: 1rem; color: var(--text-primary);
 }
 .footer-year {
-  font-family: var(--font-mono); font-size: 0.7rem;
+  font-family: var(--font-mono); font-size: 0.72rem;
   color: var(--text-muted); margin-top: 2px;
 }
 
